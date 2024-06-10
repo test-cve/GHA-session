@@ -16,6 +16,9 @@ GHA concepts:
 12. 2 Examples
 
 
+### Others
+Commit messages relevance - [skip ci] , [ci skip] , [skip actions], [actions skip], [no ci]
+
 ## About Example:
 This is a simple web service with 2 endpoints:
 
