@@ -1,0 +1,26 @@
+name: Env Variables and Variables Demo
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  env_and_var_demo:
+    runs-on: ubuntu-latest
+
+    env:
+      ENV_VAR: "Hello from environment variable!"
+      MY_VAR: "Custom variable value"
+
+    steps:
+      - name: Print Environment Variable
+        run: echo "$ENV_VAR"
+
+      - name: Print Custom Variable
+        run: echo "$MY_VAR"
+
+      - name: Use Variable in Step
+        run: |
+          echo "Using variable in step: ${{ env.MY_VAR }}"
+          echo "Concatenating environment and custom variable: $ENV_VAR $MY_VAR"

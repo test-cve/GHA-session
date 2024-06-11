@@ -1,0 +1,19 @@
+name: Step Outputs Demo
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  step_outputs_demo:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Step 1
+        id: step1
+        run: echo "::set-output name=my_output::Hello from Step 1"
+
+      - name: Step 2
+        id: step2
+        run: echo "Received output from Step 1- ${{ steps.step1.outputs.my_output }}"
