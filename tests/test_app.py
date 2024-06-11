@@ -1,8 +1,8 @@
-import unittest
-from flask import Flask, request, jsonify
-import time
 import json
-from app import app, start_time
+import unittest
+
+from app import app
+
 
 class MySvcTests(unittest.TestCase):
 
