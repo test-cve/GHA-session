@@ -1,0 +1,22 @@
+name: Download and Use File
+
+on:
+  workflow_run:
+    workflows: ["Create and Upload File"]
+    types:
+      - completed
+
+jobs:
+  download_file:
+    runs-on: ubuntu-latest
+    if: github.event.workflow_run.conclusion == 'success'
+
+    steps:
+      - name: Download file
+        uses: actions/download-artifact@v2
+        with:
+          name: sample-file
+          path: .
+
+      - name: Display file contents
+        run: cat sample.txt
