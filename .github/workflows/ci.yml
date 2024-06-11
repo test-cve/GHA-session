@@ -52,6 +52,10 @@ jobs:
     #     file: Dockerfile
     #     push: true
     #     tags: ${{ secrets.DOCKERHUB_USERNAME }}/my-python-project:latest
+    - name: Install IBM Cloud CLI
+      run: |
+        curl -sL https://ibm.biz/idt-installer | bash
+        ibmcloud --version  # Verify installation
     - name: Log in to IBM Cloud Container Registry
       run: ibmcloud cr login --apikey ${{ secrets.IBMCLOUD_API_KEY }}
     - name: Tag Docker image for IBM Cloud
