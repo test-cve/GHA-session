@@ -56,13 +56,11 @@ jobs:
       run: |
         curl -sL https://ibm.biz/idt-installer | bash
         ibmcloud --version  # Verify installation
-        ibmcloud plugin install container-registry -r 'IBM Cloud'
+        # ibmcloud plugin install container-registry -r 'IBM Cloud'
     - name: Authenticate with IBM Cloud
       run: |
-        ibmcloud login --apikey ${{ secrets.IBMCLOUD_API_KEY }} -r "us-south" -g "default"
-    - name: Log in to IBM Cloud Container Registry
-      if: always()
-      run: ibmcloud cr login --apikey ${{ secrets.IBMCLOUD_API_KEY }}
+        ibmcloud login --apikey ${{ secrets.IBMCLOUD_API_KEY }} -r "us-south" 
+      #-g "prateek-rg"
     - name: Tag Docker image for IBM Cloud
       if: always()
       run: docker tag ${{ secrets.DOCKERHUB_USERNAME }}/my-python-project:latest us.icr.io/${{ secrets.IBM_CLOUD_NAMESPACE }}/my-python-project:latest
