@@ -1,48 +1,48 @@
-name: Test and Build Service
+# name: Test and Build Service
 
-on: workflow_dispatch
+# on: workflow_dispatch
 
-jobs:
+# jobs:
 
-  Build-And-Test:
+#   Build-And-Test:
   
-    runs-on: ubuntu-latest
+#     runs-on: ubuntu-latest
     
-    steps:
-      - name: Code Checkout
-        uses: actions@checkout@v3
+#     steps:
+#       - name: Code Checkout
+#         uses: actions@checkout@v3
 
-      - name: Install Dependencies
-        run: cmd # has to be the file which should have everything installed like ruff installation, formatting-black and isort etc
+#       - name: Install Dependencies
+#         run: cmd # has to be the file which should have everything installed like ruff installation, formatting-black and isort etc
 
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.11
+#       - name: Set up Python
+#         uses: actions/setup-python@v2
+#         with:
+#           python-version: 3.11
   
-      - name: Lint checks
-        run: Run the lint check command
-      - name: Code Formatting
-        run: run the code formatting tools.
-      - name: Run Unit tests
-        run: cmd to run unit tests
-      - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v4.0.1
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-      - name: Pre-commit checks
-        run: see if there is any pre commit step required else remove this
-      - name: Generate Zip artifact
-        run: zip -r my-web-service.zip .
-      - name: Build Docker image
-        run: docker build -t my-web-service .
-      - name: Save Docker image to a file
-        run: docker save my-web-service > my-web-service.tar
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: my-web-service
-          path: .
+#       - name: Lint checks
+#         run: Run the lint check command
+#       - name: Code Formatting
+#         run: run the code formatting tools.
+#       - name: Run Unit tests
+#         run: cmd to run unit tests
+#       - name: Upload coverage reports to Codecov
+#         uses: codecov/codecov-action@v4.0.1
+#         with:
+#           token: ${{ secrets.CODECOV_TOKEN }}
+#       - name: Pre-commit checks
+#         run: see if there is any pre commit step required else remove this
+#       - name: Generate Zip artifact
+#         run: zip -r my-web-service.zip .
+#       - name: Build Docker image
+#         run: docker build -t my-web-service .
+#       - name: Save Docker image to a file
+#         run: docker save my-web-service > my-web-service.tar
+#       - uses: actions/upload-artifact@v4
+#         if: always()
+#         with:
+#           name: my-web-service
+#           path: .
           
 
 
