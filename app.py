@@ -1,14 +1,16 @@
 import time
 
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify
 
 app = Flask(__name__)
 
 start_time = time.time()
 
+
 @app.route('/hello/<name>', methods=['GET'])
 def greet(name):
     return f"Hello, {name}!"
+
 
 @app.route('/health', methods=['GET'])
 def health_check():
@@ -27,6 +29,7 @@ def health_check():
         "uptime": uptime
     }
     return jsonify(health_status), 200
+
 
 if __name__ == '__main__':
     app.run(debug=False)
