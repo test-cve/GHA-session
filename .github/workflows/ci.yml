@@ -45,13 +45,13 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-    - name: Build and push Docker image to DockerHub
-      uses: docker/build-push-action@v5
-      with:
-        context: .
-        file: Dockerfile
-        push: true
-        tags: ${{ secrets.DOCKERHUB_USERNAME }}/my-python-project:latest
+    # - name: Build and push Docker image to DockerHub
+    #   uses: docker/build-push-action@v5
+    #   with:
+    #     context: .
+    #     file: Dockerfile
+    #     push: true
+    #     tags: ${{ secrets.DOCKERHUB_USERNAME }}/my-python-project:latest
     - name: Log in to IBM Cloud Container Registry
       run: ibmcloud cr login --apikey ${{ secrets.IBMCLOUD_API_KEY }}
     - name: Tag Docker image for IBM Cloud
