@@ -1,0 +1,26 @@
+name: Multiple Input Fields Workflow
+
+on: 
+    workflow_dispatch:
+      inputs:
+        name:
+            type: choice
+            description: Choose the role
+            options: 
+            - developer
+            - tester
+        some-input:
+            description: 'Input field 2'
+            required: true
+            type: boolean
+
+jobs:
+  process_inputs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print Input 1
+        run: echo "Input 1- ${{ inputs.name }}"
+
+      - name: Print Input 2
+        run: echo "Input 2- ${{ inputs.some-input }}"
