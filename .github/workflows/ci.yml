@@ -57,10 +57,13 @@ jobs:
         curl -sL https://ibm.biz/idt-installer | bash
         ibmcloud --version  # Verify installation
     - name: Log in to IBM Cloud Container Registry
+      if: always()
       run: ibmcloud cr login --apikey ${{ secrets.IBMCLOUD_API_KEY }}
     - name: Tag Docker image for IBM Cloud
+      if: always()
       run: docker tag ${{ secrets.DOCKERHUB_USERNAME }}/my-python-project:latest us.icr.io/${{ secrets.IBM_CLOUD_NAMESPACE }}/my-python-project:latest
     - name: Push Docker image to IBM Cloud Container Registry
+      if: always()
       run: docker push us.icr.io/${{ secrets.IBM_CLOUD_NAMESPACE }}/my-python-project:latest
     - name: Upload artifact
       uses: actions/upload-artifact@v3
