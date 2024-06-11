@@ -31,5 +31,6 @@ class MySvcTests(unittest.TestCase):
         self.assertIn('minutes', data['uptime'])
         self.assertIn('seconds', data['uptime'])
 
+
 if __name__ == '__main__':
     unittest.main()
