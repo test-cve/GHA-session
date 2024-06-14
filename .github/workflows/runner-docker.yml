@@ -1,0 +1,37 @@
+name: Runner as Docker
+on: [workflow_dispatch]
+
+jobs:
+  docker-job:
+    runs-on: ubuntu-latest
+    container: 
+      image: node:22-alpine3.19
+    steps:
+      - name: Log node and OS version
+        run: |
+          node -v
+          cat /etc/os-release
+  
+  private-docker-job:
+    runs-on: ubuntu-latest
+    container: 
+      image: iamprateeksh/test-basic-app:3.0
+      credentials:
+        username:  ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+      env:
+        API_URL: "THIS IS A API URL ENV VARIABLE"
+      ports:
+        - 80
+      # volumes:
+      #   - vol_name:/path_in_container # named volumes
+      #   - /path_to_container # Anonymous volumes
+      #   - /path_in_host:/path_in_container # point mount volumes
+      options: --cpus 1
+    steps:
+      - name: Log OS version
+        run: |
+          cat /etc/os-release
+      - name: Print env var
+        run: echo $API_URL
+    
