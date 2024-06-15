@@ -1,0 +1,31 @@
+name: Run Docker in Steps
+on: [workflow_dispatch]
+
+
+jobs:
+  usual-job:
+    runs-on: windows-latest
+    steps:
+      - name: Print windows version
+        run: systeminfo | findstr /B /C:"OS Name" /B /C:"OS Version"
+
+  docker-job-with-docker-in-steps:
+    runs-on: ubuntu-latest
+    container:
+      image: iamprateeksh/test-basic-app:3.0
+      credentials: 
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+    steps:
+    - name: Log OS version
+      run: |
+        cat /etc/os-release
+    - name: CONTAINER-STEP
+      uses: docker://node:18.16-alpine3.17
+      with: 
+        entrypoint: /usr/local/bin/node
+        args: -p 4*5
+    - name: Log-node-version
+      uses: docker://node:18.16-alpine3.17
+      with: 
+        args: -v
