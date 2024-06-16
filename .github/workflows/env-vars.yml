@@ -1,7 +1,7 @@
 name: Env Variables and Variables Demo
 
 on:
-  push:
+  workflow_dispatch:
     branches:
       - main
 
