@@ -16,6 +16,9 @@ GHA concepts:
 12. 2 Examples
 
 
+**Repository Dispatch** - This has to be on Main branch only and will not work for other branches.
+<br> **When using workflow_run**: There can only be three levels of nesting i.e. if Workflow A depends on Workflow B and Workflow B on Workflow C, then it will work but not if Workflow D is also there as a dependency.
+
 ### Others
 Commit messages relevance - [skip ci] , [ci skip] , [skip actions], [actions skip], [no ci]
 
