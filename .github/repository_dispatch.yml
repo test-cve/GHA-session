@@ -1,0 +1,14 @@
+name: External Events
+on: 
+  repository_dispatch:
+    type: [build] # API Will respond to only the types mentioned, if no type is provided then no condition on when it should trigger
+
+jobs:
+  echo-a-string:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo a simple string
+        run: echo "Repository Dispatch Example!!"
+      - name: echo-payload-passed
+        run: echo ${{ github.event.client_payload.environment_type }}
+  
