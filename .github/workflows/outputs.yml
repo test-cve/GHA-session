@@ -1,9 +1,6 @@
 name: Step Outputs Demo
 
-on:
-  push:
-    branches:
-      - main
+on: [workflow_dispatch]
 
 jobs:
   step_outputs_demo:
